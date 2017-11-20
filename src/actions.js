@@ -67,9 +67,7 @@ export function addStage(text) {
     stages.push(text)
     firebase.database().ref('stages').push(text);
 
-    let userstages = [...store.getState().user.userStages];
-    userstages.push(text)
-    database.ref('users/' + userID + '/stages/').push(text);
+    firebase.database().ref('users/' + userID + '/stages/').push(text);
 
 }
 
