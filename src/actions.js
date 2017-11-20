@@ -184,5 +184,5 @@ export function addBoard(text) {
     let boardsUser = [...store.getState().user.boards];
     boardsUser.push(text);
     // firebase.database().ref('users/' + userID + '/boards/').push(text);
-    database.ref('users/' + userID + '/boards/').push(text);
+    database.ref('users/' + userID + '/boards/').push(Text);
 }
