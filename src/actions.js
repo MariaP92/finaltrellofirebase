@@ -42,14 +42,14 @@ export function readBoard() {
 
 export function addStage(text) {
 
-    let userstages = [...store.getState().user.userStages];
-    userstages.push (  text )
-    database.ref('users/' + userID + '/stages/').push(text);
-   
    
     let stages = [...store.getState().stages];
     stages.push (  text )
     firebase.database().ref('stages').push (text);
+
+    let userstages = [...store.getState().user.userStages];
+    userstages.push (  text )
+    database.ref('users/' + userID + '/stages/').push(text);
 
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './SignUp.css';
+import './sass/main.css';
 import Logo from './img/logo.png'
 import { Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
 import { HashRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';

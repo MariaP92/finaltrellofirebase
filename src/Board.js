@@ -1,7 +1,7 @@
 import React from 'react'
 import { addStage } from './actions';
 import Stage from './Stage';
-import './Board.css';
+import './sass/main.css';
 import Logo from "./img/logo.png"
 import { HashRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import { connect } from "redux-zero/react";

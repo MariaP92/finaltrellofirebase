@@ -1,6 +1,5 @@
 import React from 'react';
 import Board from './Board';
-import './App.css';
 import { Component } from 'react';
 import LogIn from './LogIn';
 import MainBoard from './MainBoard'

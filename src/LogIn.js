@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './LogIn.css';
+import './sass/main.css';
 import Logo from './img/logo.png'
 import SingUp from './SignUp'
 import { Grid, Row, Col, Thumbnail, Button } from 'react-bootstrap';
