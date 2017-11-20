@@ -181,8 +181,10 @@ export function addBoard(text) {
     firebase.database().ref('boards').push(text);
     console.log(store.getState().boards);
 
-    let boardsUser = [...store.getState().user.boards];
-    boardsUser.push(text);
+    // let boardsUser = [...store.getState().user.boards];
+    // boardsUser.push(text);
     // firebase.database().ref('users/' + userID + '/boards/').push(text);
-    database.ref('users/' + userID + '/boards/').push(Text);
+    // database.ref('users/' + userID + '/boards/').push(Text);
+    firebase.database().ref('users/' + userID + '/boards/').push(text);
+    
 }
