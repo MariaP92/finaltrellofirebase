@@ -4,7 +4,7 @@
 }
 
 .cabecera{
-    background: #40474D;
+    background: #2E3942;
 }
 
 .cabecera button{
@@ -145,4 +145,11 @@ li{
 .boardStage input{
     margin: 10px;
     color: #383236;
+}
+
+.boardDIv{
+    background-color: #4F555E;
+    margin: 10px;
+    padding: 7px 10px;
+    color: white;
 }

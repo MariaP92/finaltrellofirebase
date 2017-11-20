@@ -11,7 +11,7 @@ const SignUp = ({successLogin}) => {
     return (
         <div className="grid">
              {
-               successLogin  && <Redirect to = "/board" />
+               successLogin  && <Redirect to = "/mainboard" />
             }
             <form className="form login" onSubmit =  {
                e => {

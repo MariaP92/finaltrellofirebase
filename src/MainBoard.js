@@ -36,7 +36,7 @@ const MainBoard = ({ boards , successLogin}) => {
 
     const ListBoard = boards.map(board => {
         return (
-            <div>
+            <div className="boardDIv">
                 <h3> {board}</h3>
 
                 <form>
