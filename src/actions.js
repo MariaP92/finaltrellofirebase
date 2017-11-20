@@ -38,25 +38,36 @@ export function readBoard() {
             tasks: tasks
         })
     });
+
+    firebase.database().ref('boards').on('value', res => {
+        let boards = [];
+        res.forEach(snap => {
+            const board = snap.val();
+            boards.push(board)
+        })
+        store.setState({
+            boards: boards
+        })
+    });
 }
 
 export function addStage(text) {
 
-   
+
     let stages = [...store.getState().stages];
-    stages.push (  text )
-    firebase.database().ref('stages').push (text);
+    stages.push(text)
+    firebase.database().ref('stages').push(text);
 
     let userstages = [...store.getState().user.userStages];
-    userstages.push (  text )
+    userstages.push(text)
     database.ref('users/' + userID + '/stages/').push(text);
 
 }
 
 export function addTask(stage, text) {
-   
-    
-    
+
+
+
     let userTasks = [...store.getState().user.userTasks];
     let newUserTask = {
         id: store.getState().user.userTasks.length,
@@ -66,20 +77,20 @@ export function addTask(stage, text) {
 
     console.log(userID);
     database.ref('users/' + userID + '/tasks/' + newUserTask.id).set(newUserTask);
- 
- 
+
+
     /**ttttt */
-    console.log ('addTask:', stage + ' - ' +  text);
-    
-        let tasks = [...store.getState().tasks];
-        let newTask = {
-            id : store.getState().tasks.length,
-            title: text,
-            stage : stage
-         } 
-    
-        firebase.database().ref('tasks/' + newTask.id).set (newTask);
-        console.log("addtask" + userID);
+    console.log('addTask:', stage + ' - ' + text);
+
+    let tasks = [...store.getState().tasks];
+    let newTask = {
+        id: store.getState().tasks.length,
+        title: text,
+        stage: stage
+    }
+
+    firebase.database().ref('tasks/' + newTask.id).set(newTask);
+    console.log("addtask" + userID);
 }
 
 /**LOG IN -LOG OUT -SIGN IN */
@@ -158,9 +169,9 @@ auth.onAuthStateChanged(user => {
     }
 });
 export function addBoard(text) {
-    
-        let boards = [...store.getState().boards];
-        boards.push (  text )
-        firebase.database().ref('boards').push (text);
 
+    let stages = [...store.getState().boards];
+    stages.push(text);
+    firebase.database().ref('boards').push(text);
+    console.log(store.getState().boards);
 }

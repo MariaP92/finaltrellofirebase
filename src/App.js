@@ -22,7 +22,7 @@ const App = ({boards, stages, tasks,successLogin }) => {
             <Switch>
               <Route path="/login" render={() => <LogIn />} />
               <Route path="/signup" render={() => <SignUp />} />
-              <Route path="/mainBoard" render={() => <MainBoard boards={boards}/>} />
+              <Route path="/mainBoard" render={() => <MainBoard boards={boards} successLogin ={successLogin }/>} />
               <Route path="/board" render={() =>  <Board stages={stages}  tasks = {tasks} successLogin ={successLogin } />} />
               <Route component={LogIn} />
             </Switch>

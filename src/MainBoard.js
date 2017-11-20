@@ -31,13 +31,31 @@ const Header = () => {
     );
 }
 
-const MainBoard = ({boards}) => {
-    const listBoard = boards.map(board => {
-        return <BoardMain key={board} title={board}/>
+const MainBoard = ({ boards , successLogin}) => {
+    // const listBoard = boards.map(board => {
+    //     console.log("sdads" + boards);
+    //     return <BoardMain key={board} title={board} />
+    // });
+
+    const ListBoard = boards.map(board => {
+        return (
+            <div>
+                <h3> {board}</h3>
+
+                <form>
+                    <NavLink to='/board'>
+                        <button> Go to Board </button>
+                    </NavLink>
+                </form>
+
+            </div>
+        );
     });
     return (
         <div>
-          
+            {
+                !successLogin && <Redirect to="/login" />
+            }
             <Header />
             <div className="Board-container">
                 <Grid>
@@ -50,7 +68,7 @@ const MainBoard = ({boards}) => {
                                     addBoard(this.boardInputRef.value);
                                 }}>
                                     <input type="text" ref={e => this.boardInputRef = e} />
-                                    <button type="submit" className="form__input" id="btnAddList" > save Board</button>
+                                    <button type="submit" className="form__input"  > save Board</button>
                                 </form>
                             </div>
                         </Col>
@@ -58,7 +76,7 @@ const MainBoard = ({boards}) => {
                     <Row>
                         <Col md={12}>
                             <div className="Board-column">
-                                {listBoard}
+                                {ListBoard}
                             </div>
                         </Col>
                     </Row>
