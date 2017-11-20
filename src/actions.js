@@ -75,18 +75,13 @@ export function addStage(text) {
 
 export function addTask(stage, text) {
 
-
-
-    let userTasks = [...store.getState().user.userTasks];
-    let newUserTask = {
-        id: store.getState().user.userTasks.length,
-        title: text,
-        stage: stage
-    }
-
-    console.log(userID);
-    database.ref('users/' + userID + '/tasks/' + newUserTask.id).set(newUserTask);
-
+    // let userTasks = [...store.getState().user.userTasks];
+    // let newUserTask = {
+    //     id: store.getState().user.userTasks.length,
+    //     title: text,
+    //     stage: stage
+    // }
+    // console.log(userID);
 
     /**ttttt */
     console.log('addTask:', stage + ' - ' + text);
@@ -97,6 +92,8 @@ export function addTask(stage, text) {
         title: text,
         stage: stage
     }
+
+    database.ref('users/' + userID + '/tasks/' + newTask.id).set(newTask);
 
     firebase.database().ref('tasks/' + newTask.id).set(newTask);
     console.log("addtask" + userID);
@@ -186,5 +183,6 @@ export function addBoard(text) {
 
     let boardsUser = [...store.getState().user.boards];
     boardsUser.push(text);
+    // firebase.database().ref('users/' + userID + '/boards/').push(text);
     database.ref('users/' + userID + '/boards/').push(text);
 }
