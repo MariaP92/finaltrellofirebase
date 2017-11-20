@@ -23,9 +23,18 @@ export function readBoard() {
             const stage = snap.val();
             stages.push(stage);
         })
+
         store.setState({
-            stages: stages
+            
+                stages : stages
+            
         })
+
+        // store.setState({
+        //     user: {
+        //         userStages : stages
+        //     }
+        // })
     });
 
     firebase.database().ref('tasks').on('value', res => {
@@ -174,4 +183,8 @@ export function addBoard(text) {
     stages.push(text);
     firebase.database().ref('boards').push(text);
     console.log(store.getState().boards);
+
+    let boardsUser = [...store.getState().user.boards];
+    boardsUser.push(text);
+    database.ref('users/' + userID + '/boards/').push(text);
 }

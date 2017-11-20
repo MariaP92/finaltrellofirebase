@@ -12,7 +12,8 @@ const initialState = {
       lastName :  null,
       pass :  null,
       userStages : [],
-      userTasks: []      
+      userTasks: [],
+      boards: []      
    }  
 };
 

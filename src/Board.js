@@ -30,7 +30,8 @@ const Header = () => {
     );
 }
 
-const Board = ({  stages, tasks, successLogin}) => {
+const Board = ({ user, stages, tasks, successLogin}) => {
+    console.log(user.userStages);
     const list = stages.map(stage => {
         return <Stage key={stage} title={stage}
             tasks={tasks.filter(e => e.stage === stage)}

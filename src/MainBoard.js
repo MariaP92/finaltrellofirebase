@@ -32,10 +32,7 @@ const Header = () => {
 }
 
 const MainBoard = ({ boards , successLogin}) => {
-    // const listBoard = boards.map(board => {
-    //     console.log("sdads" + boards);
-    //     return <BoardMain key={board} title={board} />
-    // });
+
 
     const ListBoard = boards.map(board => {
         return (
