@@ -25,9 +25,9 @@ export function readBoard() {
         })
 
         store.setState({
-            
-                stages : stages
-            
+
+            stages: stages
+
         })
 
         // store.setState({
@@ -67,7 +67,12 @@ export function addStage(text) {
     stages.push(text)
     firebase.database().ref('stages').push(text);
 
-    firebase.database().ref('users/' + userID + '/stages/').push(text);
+    firebase.database().ref('users/' + userID + '/stages/').push({
+        title: text,
+        user_id: userID
+    }).then(res => {
+        console.log('board id: ', res.key)
+    });
 
 }
 
@@ -88,7 +93,8 @@ export function addTask(stage, text) {
     let newTask = {
         id: store.getState().tasks.length,
         title: text,
-        stage: stage
+        stage: stage,
+        userID : userID
     }
 
     database.ref('users/' + userID + '/tasks/' + newTask.id).set(newTask);
@@ -174,15 +180,18 @@ auth.onAuthStateChanged(user => {
 });
 export function addBoard(text) {
 
-    let stages = [...store.getState().boards];
-    stages.push(text);
-    firebase.database().ref('boards').push(text);
-    console.log(store.getState().boards);
 
-    // let boardsUser = [...store.getState().user.boards];
-    // boardsUser.push(text);
-    // firebase.database().ref('users/' + userID + '/boards/').push(text);
-    // database.ref('users/' + userID + '/boards/').push(Text);
-    firebase.database().ref('users/' + userID + '/boards/').push(text);
-    
+    let boardsUser = [...store.getState().boards];
+    console.log("before", store.getState().boards);
+
+    store.getState().boards.push({ text, userID });
+    console.log("after", store.getState().boards);
+    firebase.database().ref('boards').push(text);
+    firebase.database().ref('users/' + userID + '/boards/').push({
+        title: text,
+        user_id: userID
+    }).then(res => {
+        console.log('board id: ', res.key)
+    });
+
 }
